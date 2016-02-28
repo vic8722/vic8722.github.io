@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victoria Solorzano</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+  <header>
+    <h1>Victoria Solorzano</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About Me</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Blog</a></li>
+
+      </ul>
+    </nav>
+
+  </header>
+
+  <hr>
+
+  <main>
+    <article>
+      <h2>CSS Concepts</h2>
+      <h3>February 26, 2016</h3>
+
+      <h4>What does it mean to display <em>inline</em> vs using <em>inline block</em>?</h4>
+      <p>Using the <code>inline</code> property for <code>display</code> will align the element </p>
+
+      <p>First, let's look at some definitions to give us somewhere to start. (Reference: <a href="http://www.w3schools.com/html/html_blocks.asp">w3schools.com</a>)</p>
+
+        <ul>
+          <li><strong>block-level element</strong> - starts on a new line and takes up the full width available (stretches out to the left and right as far as it can.</li>
+          <li><strong>inline element</strong> - does not start on a new line and only takes up as much width as necessary.</li>
+        </ul>
+
+      <p>Hmm, ok. So an inline element makes sense. It doesn't start on a new line, which means it will display right next to the previous element in the flow.</p>
+
+      <p>Inline elements also will only take up as much space as necessary. That means we are not allowed to definie the size of the object, it will look at how much space is needed to fit an element of that type and place it in the browser, ignoring any size definitions.</p>
+
+      <p>Let's look at some examples:</p>
+
+      <p>Here is some basic html to display a couple <code>div</code> elements on the screen.</p>
+
+      <img src= "../imgs/CSSConcepts-image1.png" alt="Basic html"/>
+
+      <p>And here is the basic CSS to format them. By default, <code>div</code> elements are <code>block</code> elements, so we did not need to define them as such.</p>
+
+      <img src= "../imgs/CSSConcepts-image2.png" alt="CSS"/>
+
+      <p>Let's take a look at how they show up in the web browser:</p>
+
+      <img src= "../imgs/CSSConcepts-image3.png" alt="Displayed"/>
+
+      <p>Notice that they show up stacked on top of one another. That's because <code>block</code> elements by default take up the entire width of the page.</p>
+
+      <p>Next let's see what these two <code>div</code>s look like with <code>display: inline</code>.</p>
+
+      <img src= "../imgs/CSSConcepts-image4.png" alt="CSS"/>
+      <img src= "../imgs/CSSConcepts-image5.png" alt="Displayed"/>
+
+      <p>Aha! The two <code>div</code>s are now next to each other on the same line... and they seem to have shrunk. That's because inline tells the elements to only take up as much space as necessary. Hmm, what if we add more text to Div1?</p>
+
+      <img src= "../imgs/CSSConcepts-image6.png" alt="CSS"/>
+      <img src= "../imgs/CSSConcepts-image7.png" alt="Displayed"/>
+
+      <p>Great! Div1 has now stretched out into a rectangle to fit the extra text in the box.</p>
+
+      <p>That will lastly leave us to se what the two <code>div</code>s will look like with <code>inline-block</code>.</p>
+
+      <img src= "../imgs/CSSConcepts-image8.png" alt="CSS"/>
+      <img src= "../imgs/CSSConcepts-image9.png" alt="Displayed"/>
+
+      <p>Is that what you would have guessed it would look like? Since they still have the <code>block</code> aspect, they are still able to have their size defined, but are layed-out <code>inline</code> so they are next to one another on the same line!</p>
+
+      <p>I hope you enjoyed this brief introduction to the difference between <code>inline</code> and <code>inline-block</code> and were able to learn something.</p>
+
+    </article>
+  </main>
+
+  <aside>
+    <h3>Other Posts</h3>
+    <nav>
+      <ul>
+        <li><a href="#">Previous Post</a></li>
+        <li><a href="#">Next Post</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <aside>
+    <h3>Biography</h3>
+    <p>Insert brief bio here.</p>
+  </aside>
+
+</body>
+</html>
