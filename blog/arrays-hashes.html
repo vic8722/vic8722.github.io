@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victoria Solorzano</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+  <header>
+    <h1>Victoria Solorzano</h1>
+    <section>
+      <nav>
+        <ul class="nav-bar">
+          <li class="navigation"><a href="#">Contact</a></li>
+          <li class="navigation"><a href="#">About Me</a></li>
+          <li class="navigation"><a href="#">Projects</a></li>
+          <li class="navigation"><a href="#">Resume</a></li>
+          <li class="navigation"><a href="#">Blog</a></li>
+        </ul>
+      </nav>
+    </section>
+
+  </header>
+
+  <hr>
+
+  <main>
+    <article>
+      <h2>Arrays and Hashses</h2>
+      <h3>March 6, 2016</h3>
+      <h4>Arrays</h4>
+      <p>Arrays are useful for collections of data, particularly those that need to be in a certain order. The values stored in an array can be accessed by their index number, starting with the first value stored at index 0.</p>
+      <p>So for example, here is how you would use Ruby to create an array of random numbers:</p>
+      <pre><code>my_array = [1,2,7,4,15]
+=> [1, 2, 7, 4, 15]</code></pre>
+      <p>Pretty neat, huh?</p>
+      <p>Let's say you are organizing a marathon and are tasked with keeping track of what order the finishers complete the race. You can use an array for that!</p>
+      <p>First, before the race begins we can set up an empty array:</p>
+      <pre><code>finishers = Array.new
+      => []</code></pre>
+      <p>Now that we have an array to hold our names, we can add each person as they come across the finish line.</p>
+      <pre><code>finishers << "Sarah"
+      => ["Sarah"]</code></pre>
+      <pre><code>finishers << "Greg"
+      => ["Sarah", "Greg"]</code></pre>
+      <pre><code>finishers << "Alice"
+      => ["Sarah", "Greg", "Alice"]</code></pre>
+      <p>And so on. One of the benefits in writing the code this way using an array is it keeps the values in the same order. This way, if you want to know who came in first place you can access the name in index 0:</p>
+      <pre><code>finishers[0]
+      => "Sarah"</code></pre>
+      <p>Or, if you want to know who came in last, you can reference the numbers starting from the end using negative numbers. To find out who came in last you can use -1.</p>
+      <pre><code>finishers[-1]
+      => "Alice"</code></pre>
+      <h4>Hashes</h4>
+      <p>Hashes are similar to arrays, however instead of being collections stored in numerical order they are collections of key and value pairs.</p>
+      <p>Hashes can be particularly useful when you want to keep track of data as it relates to something else. For example, let's say you wanted to know the bib number for each person running in the marathon. You can make a hash for that!</p>
+      <pre><code>bibs = {"Alice" => 4827, "Greg" => 1337, "Sarah" => 8869}
+=> {"Alice"=>4827, "Greg"=>1337, "Sarah"=>8869}</code></pre>
+      <p>Now, if we want to know what Sarah's bib number is after she won the race we can look it up much like we look up values in the array, only instead of using an index we will use the key.</p>
+      <pre><code>bibs["Sarah"]
+      => 8869</code></pre>
+    </article>
+  </main>
+
+  <aside>
+    <h3>Other Posts</h3>
+    <nav>
+      <ul>
+        <li><a href="#">Previous Post</a></li>
+        <li><a href="#">Next Post</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <aside>
+    <h3>Biography</h3>
+    <p>Insert brief bio here.</p>
+  </aside>
+
+</body>
+</html>
