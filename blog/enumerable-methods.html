@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victoria Solorzano</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+  <header>
+    <h1>Victoria Solorzano</h1>
+  <section>
+    <nav>
+      <ul class="nav-bar">
+      <li class="navigation"><a href="contact.html">Contact</a></li>
+      <li class="navigation"><a href="#">About Me</a></li>
+      <li class="navigation"><a href="#">Projects</a></li>
+      <li class="navigation"><a href="#">Resume</a></li>
+      <li class="navigation"><a href="http://vic8722.github.io/blog/index.html">Blog</a></li>
+    </ul>
+    </nav>
+  </section>
+
+  </header>
+
+  <hr>
+
+  <main>
+    <article>
+      <h2>Enumerable#cycle</h2>
+      <h3>March 12, 2016</h3>
+      <p>The method <code>cycle</code> is a fairly simple and straight-forward method. It takes an enumerable object and repeats its pattern over and over again a specified number of times, or forever if no number is passed with it. Let's take a look at it in action.</p>
+      <p><pre><code>
+  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+  months.cycle(2) {|x| p x}
+
+  =>"January"
+  "February"
+  "March"
+  "April"
+  "May"
+  "June"
+  "July"
+  "August"
+  "September"
+  "October"
+  "November"
+  "December"
+  "January"
+  "February"
+  "March"
+  "April"
+  "May"
+  "June"
+  "July"
+  "August"
+  "September"
+  "October"
+  "November"
+  "December"</code></pre></p>
+  <p>Pretty cool? Gotta make sure we don't repeat that code above without the number passed along to cycle like this: <code>months.cycle {|x| p x}</code>. That would create an infinite loop!</p>
+  <p>Okay, so now that we know about this cool new function... how can we use it? To do this let me introduce another method, <code>next</code>. This will call the next value in an enumerator each time it is called. Using our example from earlier:</p>
+  <p><pre><code>
+  months = months.cycle
+  puts months.next
+  puts months.next
+  puts months.next
+
+  =>January
+  February
+  March
+  </code></pre></p>
+  <p>When researching cycle, I thought of a real world refactoring situation where <code>cycle</code> and <code>next</code> would have been quite useful for me. I created a method that would take an array of names and the number of members wanted in groups and give back an array of arrays with randomized groups. In order to do that, I created a variable <code>group_counter</code> and wanted to use it to reference a location in my array. However, I wanted to add names one at a time to each group. This meant I needed to  loop back around on my counter each time it hit the last group. Here is my original code:</p>
+  <p><pre><code>
+  def accountability_groups(name_array, min_members)
+  name_array = name_array.clone
+  num_groups = name_array.length/min_members
+  group_counter = 0
+  group_array = Array.new(num_groups) { [] }
+
+  while name_array.length > 0
+    group_array[group_counter].push(name_array.delete_at(rand(0...name_array.length)))
+    if group_counter == num_groups - 1
+      group_counter = 0
+    else
+      group_counter += 1
+    end
+  end
+  return group_array
+end
+  </code></pre></p>
+  <p>I think we can improve upon this by using <code>cycle</code> and <code>next</code>. Let's check out the refactored code:</p>
+  <p><pre><code>
+  def accountability_groups(name_array, min_members)
+  name_array = name_array.clone
+  num_groups = name_array.length/min_members
+  group_counter = (0..(num_groups-1)).cycle
+  group_array = Array.new(num_groups) { [] }
+
+  while name_array.length > 0
+  group_array[group_counter.next].push(name_array.delete_at(rand(0...name_array.length)))
+    end
+    return group_array
+  end
+
+  </code></pre></p>
+  <p>Great! Now we have a <code>group_counter</code> variable with infinite repetitions of our indicies for the group references. Each time it gets called upon it will give us the next group index until it gets to the end, then it will start back over at 0.</p>
+  <p>I hope this explanation of <code>cycle</code> was helpful for you!</p>
+
+    </article>
+  </main>
+
+  <aside>
+    <h3>Other Posts</h3>
+    <nav>
+      <ul>
+        <li><a href="#">Previous Post</a></li>
+        <li><a href="#">Next Post</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <aside>
+    <h3>Biography</h3>
+    <p>Insert brief bio here.</p>
+  </aside>
+
+</body>
+</html>
