@@ -1,0 +1,30 @@
+h2  {
+  text-align: center;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 30px;
+}
+
+h3  {
+  text-align: center;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 20px;
+}
+
+h4 {
+  text-align: left;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 18px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image_link {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  text-align: center;
+}
