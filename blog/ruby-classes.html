@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victoria Solorzano</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+  <header>
+    <h1>Victoria Solorzano</h1>
+  <section>
+    <nav>
+      <ul class="nav-bar">
+      <li class="navigation"><a href="contact.html">Contact</a></li>
+      <li class="navigation"><a href="about.html">About Me</a></li>
+      <li class="navigation"><a href="#">Projects</a></li>
+      <li class="navigation"><a href="#">Resume</a></li>
+      <li class="navigation"><a href="http://vic8722.github.io/blog/index.html">Blog</a></li>
+    </ul>
+    </nav>
+  </section>
+
+  </header>
+
+  <hr>
+
+  <main>
+    <article>
+      <h2>Using Ruby Classes</h2>
+      <h3>March 18, 2016</h3>
+      <p>Classes in Ruby can be incredibly useful when trying to group together similar methods that all have similar functions or methods that need to share variables.</p>
+<p>To show the benefits of classes, let's take a look at a quick example:</p>
+<pre><code>
+class Card
+  def initialize(suit, number)
+    @number = number.to_s
+    @suit = suit
+  end
+
+  def to_s
+    @number + " of "+  @suit
+  end
+end
+</code></pre>
+<p>Here we have a <code>Card</code> class that will create a card with a suit and number. It also overwrites the built in <code>to_s</code> method to display the card properly after it's been created. Let's see this code in action:</p>
+<pre><code>
+new_card = Card.new("Hearts","8")
+
+puts new_card
+
+=>8 of Hearts
+</code></pre>
+<p>Awesome. We created a new class, <code>Card</code>, that has two instance variables, <code>@number</code> and <code>suit</code>. Within our class, we have two instance methods, <code>initialize</code> which runs when we set a new instance of this class and <code>to_s</code> which returns our new card formatted properly. When we want to utilize the variables defined in <code>initialize</code> when we run <code>to_s</code> we can do so because they are instance variables and are available within the <code>Card</code> class.</p>
+<p>What if we want to create a whole deck of cards? Let's create another class that will make a new deck of cards and then interact with them.</p>
+<pre><code>
+class Deck
+  def initialize
+    suits = ["Hearts", "Spades", "Diamonds", "Clubs"]
+    numbers = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
+
+    @cards = Array.new
+
+    suits.each do |suit|
+      numbers.each do |number|
+        @cards.push(Card.new(suit, number))
+      end
+    end
+  end
+
+  def shuffle_cards
+    puts "Shuffling!"
+    @cards.shuffle!
+  end
+
+  def show_first
+    puts @cards[0]
+  end
+
+  def deal_cards(num_cards)
+    @cards.shift(num_cards).each do |card|
+      puts card
+    end
+  end
+
+end
+</code></pre>
+<p>Fantastic! In this <code>Deck</code> class we start off the <code>initialize</code> method we start off with two local variables, <code>suits</code> and <code>numbers</code>. Since we don't need to refer to them outside of the <code>initialize</code> method we don't need to make them instance variables.</p>
+<p>We do, however, need to make reference to the new deck of cards that is created when we make a new instance of <code>Deck</code>. We do that with the instance variable <code>@cards</code> that is used throughout the rest of the instance methods when we want to make reference to the cards in our deck.</p>
+<p>Let's check out the <code>Deck</code> method in action:</p>
+<pre><code>
+deck = Deck.new
+deck.show_first
+=>A of Hearts
+deck.shuffle_cards
+=>Shuffling!
+deck.show_first
+=>8 of Clubs
+deck.deal_cards(3)
+=>8 of Clubs
+=>K of Diamonds
+=>5 of Hearts
+</code></pre>
+<p>Wonderful. Did you notice that our <code>Deck</code> class uses the <code>Card</code> class when initializing the deck? Now when we use the <code>puts</code> method on elements in our <code>@cards</code> array that was created with instances of the <code>Card</code> class it is able to use our redefined <code>to_s</code> method within the <code>Card</code> class.</p>
+<p>I hope you found this brief introduction to Ruby Classes to be helpful!</p>
+
+
+    </article>
+  </main>
+
+  <aside>
+    <h3>Other Posts</h3>
+    <nav>
+      <ul>
+        <li><a href="#">Previous Post</a></li>
+        <li><a href="#">Next Post</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <aside>
+    <h3>Biography</h3>
+    <p>Insert brief bio here.</p>
+  </aside>
+
+</body>
+</html>
+
+<!--
+How was it to wireframe and create an HTML page with a pair?
+
+It was a little bit harder working with a pair on wireframing I found. It seems like more of a solitary activity than one you'd do with someone else for a site like this.
+
+Did you find wireframing to be helpful to your development process?
+
+Yes, I think wireframing makes it a lot easier once you're actually writing the HTML out to know where you want to put things.
+
+What did you and your pair decide made a good wireframe?
+
+We decided that a good wireframe is really basic, without using colors or any detailed design. This makes it a lot easier to write out the HTML without getting tripped up in the details.
+
+What new semantic elements did you learn about (if any)?
+
+I didn't use any new semantic elements in this challenge.
+
+
+Link to wireframe of blog image:
+
+https://github.com/vic8722/vic8722.github.io/blob/master/imgs/wireframe-blogs.png
+
+-->
