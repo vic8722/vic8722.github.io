@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victoria Solorzano</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+  <header>
+    <h1>Victoria Solorzano</h1>
+  <section>
+    <nav>
+      <ul class="nav-bar">
+      <li class="navigation"><a href="contact.html">Contact</a></li>
+      <li class="navigation"><a href="about.html">About Me</a></li>
+      <li class="navigation"><a href="#">Projects</a></li>
+      <li class="navigation"><a href="#">Resume</a></li>
+      <li class="navigation"><a href="http://vic8722.github.io/blog/index.html">Blog</a></li>
+    </ul>
+    </nav>
+  </section>
+
+  </header>
+
+  <hr>
+
+  <main>
+    <article>
+      <h2>Ruby Hashes vs. JavaScript Objects</h2>
+      <h3>March 27, 2016</h3>
+      <p>Ruby Hashes and JavaScript Objects are very similar, but do have a few differences. Let's start out by looking at how we create them in each language.</p>
+      <p>Starting off with Ruby. To create a new hash in ruby we can do this using bracket notation.</p>
+      <pre><code>
+        ages = {"Tom" => 25, "Bob" => 31, "Jane" => 28}
+
+        => {"Tom"=>25, "Bob"=>31, "Jane"=>28}
+      </code></pre>
+      <p>Similarly, we can write this same hash using the <code>new</code> method.</p>
+      <pre><code>
+        ages = Hash.new
+        ages["Tom"] = 25
+        ages["Bob"] = 31
+        ages["Jane"] = 28
+
+        puts(ages)
+        => {"Tom"=>25, "Bob"=>31, "Jane"=>28}
+      </code></pre>
+      <p>JavaScript also has two ways you can create new objects. Like Ruby, you can use bracket notation:</p>
+      <pre><code>
+        var ages = {tom: 25, bob: 31, jane: 28};
+
+        console.log(ages);
+        => { tom: 25, bob: 31, jane: 28 }
+      </code></pre>
+      <p>Or, you can use the new keyword to make the same object:</p>
+      <pre><code>
+        var ages = new Object();
+        ages.tom = 25;
+        ages.bob = 31;
+        ages.jane = 28;
+
+        console.log(ages);
+        => { tom: 25, bob: 31, jane: 28 }
+      </code></pre>
+      <p>One difference, however, is in how you call elements from hashes and objects in each language. In Ruby you need to use square brackets to call each key to return the value:</p>
+      <pre><code>
+        puts(ages["Tom"])
+        => 25
+      </code></pre>
+      <p>In Javascript, you can do this using brackets like in Ruby:</p>
+      <pre><code>
+        console.log(ages["tom"])
+        => 25
+      </code></pre>
+      <p>But you can also do the same thing using dot notation:</p>
+      <pre><code>
+        console.log(ages.tom)
+        => 25
+      </code></pre>
+      <p>As you can see, both Ruby Hashes and JavaScript Objects are very similar.</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <pre><code></code></pre>
+      <pre><code></code></pre>
+      <pre><code></code></pre>
+    </article>
+  </main>
+
+  <aside>
+    <h3>Other Posts</h3>
+    <nav>
+      <ul>
+        <li><a href="#">Previous Post</a></li>
+        <li><a href="#">Next Post</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <aside>
+    <h3>Biography</h3>
+    <p>Insert brief bio here.</p>
+  </aside>
+
+</body>
+</html>
+
+<!--
+How was it to wireframe and create an HTML page with a pair?
+
+It was a little bit harder working with a pair on wireframing I found. It seems like more of a solitary activity than one you'd do with someone else for a site like this.
+
+Did you find wireframing to be helpful to your development process?
+
+Yes, I think wireframing makes it a lot easier once you're actually writing the HTML out to know where you want to put things.
+
+What did you and your pair decide made a good wireframe?
+
+We decided that a good wireframe is really basic, without using colors or any detailed design. This makes it a lot easier to write out the HTML without getting tripped up in the details.
+
+What new semantic elements did you learn about (if any)?
+
+I didn't use any new semantic elements in this challenge.
+
+
+Link to wireframe of blog image:
+
+https://github.com/vic8722/vic8722.github.io/blob/master/imgs/wireframe-blogs.png
+
+-->
