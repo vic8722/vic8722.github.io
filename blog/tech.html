@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victoria Solorzano</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog.css">
+</head>
+<body>
+  <header>
+    <h1>Victoria Solorzano</h1>
+  <section>
+    <nav>
+      <ul class="nav-bar">
+      <li class="navigation"><a href="contact.html">Contact</a></li>
+      <li class="navigation"><a href="about.html">About Me</a></li>
+      <li class="navigation"><a href="#">Projects</a></li>
+      <li class="navigation"><a href="#">Resume</a></li>
+      <li class="navigation"><a href="http://vic8722.github.io/blog/index.html">Blog</a></li>
+    </ul>
+    </nav>
+  </section>
+
+  </header>
+
+  <hr>
+
+  <main>
+    <article>
+      <h2>SQL Injection</h2>
+      <h3>April 3, 2016</h3>
+      <p>SQL injection is a big problem for websites that allow users to make queries into database tables. It can allow a mischievous person to modify a search to gain access to information that is not intended for them to view, like user details, passwords, and account information. They can also potentially modify these databases, deleting data or modifying existing entries or adding new entries.</p>
+<p>So how would one go about performing this devious action? First, there needs to be a place on a website that allows access to the SQL database. For example, a search bar that looks up product information and display results to the user. When a user types into the text box, a message is sent to perform a query on the SQL database, filling in the search text for a variable setup in the SQL query. Depending on how that was setup, it is possible to add in additional statements that will get evaluated outside the bounds of the parameter the search is intended to be evaluating.</p>
+<p>There are a few methods that can be used to protect against SQL injection, namely blacklists, whitelists, and parameterized queries.</p>
+
+<h4>Blacklists</h4>
+<p>Blacklists involve providing a list of terms that can not be used in the search field, like "select," "insert," and "drop". However, as one would imagine, this can cause problems if one of the terms being prevented from use ends up being part of a legitimate search term. Additionally, there are ways to get around a search from showing up on a blacklist by utilizing a loop-hole where white-space characters can be represented by multiple hex values. There are also other methods for getting around the use of blacklists, which makes this the least desirable method for protection against SQL injection.</p>
+
+<h4>Whitelists</h4>
+<p>A white list is the opposite of a blacklist, instead of proving terms that can not be accepted and accepting all others, whitelists provide specific approved entries and prohibit all others. If you know that your desired input is 7 characters long and only contain numbers, you can specify those requirements. This would prevent anyone from being able to inject SQL in these type of fields. However, for our initial example of a general search box we will not be able to predetermine the structure of entries being searched for. This leads us to our final method for protection.</p>
+
+<h4>Parameterized Queries</h4>
+<p>Using a basic method for SQL queries has the entire statement being evaluated simply as part of the text. This is what allows a portion of the search that is expecting to evaluate one parameter to have malicious code inserted to add extra parameters and actions. If instead one sets up the SQL query to use a SqlParameter the term that you are getting input for can be separated out into a specific parameter. Then when the search is sent to the SQL Server it is sent as a contained parameter instead of being part of the main text to be evaluated.</p>
+
+<h4>Conclusion</h4>
+<p>This was a very basic overview of SQL Injection. For more information please see the following two sites which were used as reference:</p>
+<p>SimpleTalk: <a href = "https://www.simple-talk.com/sql/database-administration/sql-injection-how-it-works-and-how-to-thwart-it/">https://www.simple-talk.com/sql/database-administration/sql-injection-how-it-works-and-how-to-thwart-it/</a></p>
+<p>OWASP: <a href = "https://www.owasp.org/index.php/SQL_Injection"> https://www.owasp.org/index.php/SQL_Injection</a></p>
+    </article>
+  </main>
+
+  <aside>
+    <h3>Other Posts</h3>
+    <nav>
+      <ul>
+        <li><a href="#">Previous Post</a></li>
+        <li><a href="#">Next Post</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <aside>
+    <h3>Biography</h3>
+    <p>Insert brief bio here.</p>
+  </aside>
+
+</body>
+</html>
+
+<!--
+How was it to wireframe and create an HTML page with a pair?
+
+It was a little bit harder working with a pair on wireframing I found. It seems like more of a solitary activity than one you'd do with someone else for a site like this.
+
+Did you find wireframing to be helpful to your development process?
+
+Yes, I think wireframing makes it a lot easier once you're actually writing the HTML out to know where you want to put things.
+
+What did you and your pair decide made a good wireframe?
+
+We decided that a good wireframe is really basic, without using colors or any detailed design. This makes it a lot easier to write out the HTML without getting tripped up in the details.
+
+What new semantic elements did you learn about (if any)?
+
+I didn't use any new semantic elements in this challenge.
+
+
+Link to wireframe of blog image:
+
+https://github.com/vic8722/vic8722.github.io/blob/master/imgs/wireframe-blogs.png
+
+-->
