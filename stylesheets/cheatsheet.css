@@ -1,0 +1,109 @@
+body {
+  background-color: #236467;
+  font-family: 'Century Gothic', sans-serif;
+}
+
+.navigation {
+  display: inline-block;
+  margin: 20px;
+  background-color: #D06C16;
+  border: 1px solid #5D5249;
+  padding: 10px;
+}
+
+.nav-bar {
+  list-style-type: none;
+  text-align: center;
+}
+
+h1  {
+  text-align: center;
+  position: relative;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 40px;
+  padding: 20px 20px 20px 20px;
+  border: 3px solid #2C3838;
+  background-color: #0E797E;
+  color: #F77200;
+
+
+}
+
+h2  {
+  text-align: center;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 30px;
+  border: 3px solid #2C3838;
+  background-color: #0E797E;
+  color: #AA6D39;
+}
+
+h3  {
+  text-align: center;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 20px;
+}
+
+p  {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 16px;
+}
+
+a {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 16px;
+  color: black;
+
+}
+
+.picture {
+  float: left;
+  width: 30%;
+  border: 1px solid #5D5249;
+  background-color: #F77200;
+}
+
+.vic-pic {
+  width: 200px;
+  height: 200px;
+  padding: 20px 20px 20px 20px;
+}
+
+.biography {
+  float: left;
+  width: 50%;
+  border: 1px solid #5D5249;
+  background-color: #F77200;
+}
+
+.social-media {
+  float: left;
+  width: 18%;
+  border: 1px solid #5D5249;
+  background-color: #F77200;
+}
+
+.social-link {
+  list-style-type: none;
+
+}
+
+/* As hex codes
+
+*/
+
+/* As hex codes
+
+.color-primary-0 { color: #AA6D39 }
+.color-primary-1 { color: #F77200 }
+.color-primary-2 { color: #D06C16 } *main
+.color-primary-3 { color: #83644A }
+.color-primary-4 { color: #5D5249 }
+
+.color-complement-0 { color: #236467 }
+.color-complement-1 { color: #018E95 }
+.color-complement-2 { color: #0E797E } *main
+.color-complement-3 { color: #2D4E4F }
+.color-complement-4 { color: #2C3838 }
+
+*/
