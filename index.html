@@ -324,9 +324,9 @@
         const previewImage = document.getElementById('previewImage');
 
         // Handle gallery images - hover on image to open
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        const link = this.querySelector('a');
+document.querySelectorAll('.gallery-image').forEach(image => {
+    image.addEventListener('mouseenter', function() {
+        const link = this.closest('a');
         const href = link.getAttribute('href');
         
         // Skip YouTube and Google Drive links
