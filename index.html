@@ -309,9 +309,7 @@
 
         <div class="closing">
             <p>Looking forward to hearing from you!
-<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>            adding empty rows</p>
-        </div>
+</div>
     </div>
 
     <div class="preview-overlay"></div>
@@ -324,8 +322,8 @@
         const imagePreview = document.querySelector('.image-preview');
         const previewImage = document.getElementById('previewImage');
 
-        // Handle gallery images
-        document.querySelectorAll('.gallery-item').forEach(item => {
+        // Handle gallery images - same as profile photo
+document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('mouseenter', function() {
         const link = this.querySelector('a');
         const href = link.getAttribute('href');
@@ -345,6 +343,7 @@
         imagePreview.classList.remove('show');
     });
 });
+
 
         // Handle profile photo
         const photoLink = document.querySelector('.photo-link');
