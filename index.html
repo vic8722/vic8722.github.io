@@ -323,39 +323,39 @@
         const imagePreview = document.querySelector('.image-preview');
         const previewImage = document.getElementById('previewImage');
 
-        // Handle gallery images - hover to open, click to close
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                const link = this.querySelector('a');
-                const href = link.getAttribute('href');
-                
-                // Skip YouTube and Google Drive links
-                if (href.includes('youtube.com') || href.includes('drive.google.com')) {
-                    return;
-                }
-                
-                previewImage.src = href;
-                previewOverlay.classList.add('show');
-                imagePreview.classList.add('show');
-            });
-        });
-
-        // Handle profile photo - hover to open
-        const photoLink = document.querySelector('.photo-link');
-        if (photoLink) {
-            photoLink.addEventListener('mouseenter', function() {
-                const imagePath = this.getAttribute('data-image');
-                previewImage.src = imagePath;
-                previewOverlay.classList.add('show');
-                imagePreview.classList.add('show');
-            });
+        // Handle gallery images - hover on image to open
+document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        const link = this.querySelector('a');
+        const href = link.getAttribute('href');
+        
+        // Skip YouTube and Google Drive links
+        if (href.includes('youtube.com') || href.includes('drive.google.com')) {
+            return;
         }
+        
+        previewImage.src = href;
+        previewOverlay.classList.add('show');
+        imagePreview.classList.add('show');
+    });
+});
 
-        // Close preview when clicking on overlay
-        previewOverlay.addEventListener('click', function() {
-            previewOverlay.classList.remove('show');
-            imagePreview.classList.remove('show');
-        });
+// Handle profile photo - hover to open
+const photoLink = document.querySelector('.photo-link');
+if (photoLink) {
+    photoLink.addEventListener('mouseenter', function() {
+        const imagePath = this.getAttribute('data-image');
+        previewImage.src = imagePath;
+        previewOverlay.classList.add('show');
+        imagePreview.classList.add('show');
+    });
+}
+
+// Close preview when hovering off the preview image
+imagePreview.addEventListener('mouseleave', function() {
+    previewOverlay.classList.remove('show');
+    imagePreview.classList.remove('show');
+});
     </script>
 </body>
 </html>
