@@ -322,7 +322,9 @@
         const imagePreview = document.querySelector('.image-preview');
         const previewImage = document.getElementById('previewImage');
 
-// Handle gallery images - hover to open, click to close
+// Handle gallery images - 0.2s hover delay to open, click to close
+let hoverTimeout;
+
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('mouseenter', function() {
         const link = this.querySelector('a');
@@ -333,20 +335,36 @@ document.querySelectorAll('.gallery-item').forEach(item => {
             return;
         }
         
-        previewImage.src = href;
-        previewOverlay.classList.add('show');
-        imagePreview.classList.add('show');
+        hoverTimeout = setTimeout(() => {
+            previewImage.src = href;
+            previewOverlay.classList.add('show');
+            imagePreview.classList.add('show');
+        }, 200); // 0.2 seconds
+    });
+
+    item.addEventListener('mouseleave', function() {
+        clearTimeout(hoverTimeout);
+        previewOverlay.classList.remove('show');
+        imagePreview.classList.remove('show');
     });
 });
 
-// Handle profile photo - hover to open, click to close
+// Handle profile photo - same delay
 const photoLink = document.querySelector('.photo-link');
 if (photoLink) {
     photoLink.addEventListener('mouseenter', function() {
         const imagePath = this.getAttribute('data-image');
-        previewImage.src = imagePath;
-        previewOverlay.classList.add('show');
-        imagePreview.classList.add('show');
+        hoverTimeout = setTimeout(() => {
+            previewImage.src = imagePath;
+            previewOverlay.classList.add('show');
+            imagePreview.classList.add('show');
+        }, 200);
+    });
+
+    photoLink.addEventListener('mouseleave', function() {
+        clearTimeout(hoverTimeout);
+        previewOverlay.classList.remove('show');
+        imagePreview.classList.remove('show');
     });
 }
 
