@@ -323,25 +323,26 @@
         const previewImage = document.getElementById('previewImage');
 
         // Handle gallery images
-        document.querySelectorAll('.gallery-item a').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                const href = this.getAttribute('href');
-                
-                // Skip YouTube and Google Drive links
-                if (href.includes('youtube.com') || href.includes('drive.google.com')) {
-                    return;
-                }
-                
-                previewImage.src = href;
-                previewOverlay.classList.add('show');
-                imagePreview.classList.add('show');
-            });
+        document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        const link = this.querySelector('a');
+        const href = link.getAttribute('href');
+        
+        // Skip YouTube and Google Drive links
+        if (href.includes('youtube.com') || href.includes('drive.google.com')) {
+            return;
+        }
+        
+        previewImage.src = href;
+        previewOverlay.classList.add('show');
+        imagePreview.classList.add('show');
+    });
 
-            link.addEventListener('mouseleave', function() {
-                previewOverlay.classList.remove('show');
-                imagePreview.classList.remove('show');
-            });
-        });
+    item.addEventListener('mouseleave', function() {
+        previewOverlay.classList.remove('show');
+        imagePreview.classList.remove('show');
+    });
+});
 
         // Handle profile photo
         const photoLink = document.querySelector('.photo-link');
