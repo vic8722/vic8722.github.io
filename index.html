@@ -181,25 +181,17 @@
         }
 
         .image-preview {
-    pointer-events: none;
-}
-
-.preview-overlay {
-    pointer-events: auto;
-}
-
-        .image-preview {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            max-width: 80vw;
-            max-height: 80vh;
+            max-width: 90vw;
+            max-height: 90vh;
             display: none;
             pointer-events: none;
         }
@@ -211,10 +203,10 @@
         }
 
         .image-preview img {
-    max-width: 80vw;
-    max-height: 80vh;
-    object-fit: contain;
-}
+            max-width: 80vw;
+            max-height: 80vh;
+            object-fit: contain;
+        }
 
         .preview-overlay {
             position: fixed;
@@ -225,6 +217,7 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 999;
             display: none;
+            pointer-events: auto;
         }
 
         .preview-overlay.show {
@@ -243,8 +236,8 @@
         </div>
 
         <section>
-    <p>I'm a comedian and theater producer from Brooklyn, coming to Edinburgh for my first Fringe Festival in August. I've been involved in theater and performance my whole life — tap dancing since I was 4, stand up since 2018, and for the past three years I've been working in NYC and LA's drag and nightlife scene, most notably with <a href="https://www.youtube.com/@IMHOTheShow">IMHO the Show</a>. I also recently produced my own drag musical <a href="https://drive.google.com/file/d/1e_IiMyvLBStRes5Y26scLGaAWsqy9JkE/view">Wait Sis'</a> for the NY Theater Festival. I have several stand up friends performing this year, and I'm excited to catch their shows, discover new acts, and experience the full magic of Fringe. I'll be out exploring and catching shows most of the time.</p>
-</section>
+            <p>I'm a comedian and theater producer from Brooklyn, coming to Edinburgh for my first Fringe Festival in August. I've been involved in theater and performance my whole life — tap dancing since I was 4, stand up since 2018, and for the past three years I've been working in NYC and LA's drag and nightlife scene, most notably with <a href="https://www.youtube.com/@IMHOTheShow">IMHO the Show</a>. I also recently produced my own drag musical <a href="https://drive.google.com/file/d/1e_IiMyvLBStRes5Y26scLGaAWsqy9JkE/view">Wait Sis'</a> for the NY Theater Festival. I have several stand up friends performing this year, and I'm excited to catch their shows, discover new acts, and experience the full magic of Fringe. I'll be out exploring and catching shows most of the time.</p>
+        </section>
 
         <div class="divider"></div>
 
@@ -316,8 +309,8 @@
         </section>
 
         <div class="closing">
-            <p>Looking forward to hearing from you!
-</div>
+            <p>Looking forward to hearing from you!</p>
+        </div>
     </div>
 
     <div class="preview-overlay"></div>
@@ -330,58 +323,39 @@
         const imagePreview = document.querySelector('.image-preview');
         const previewImage = document.getElementById('previewImage');
 
-// Handle gallery images - 0.2s hover delay to open, click to close
-let hoverTimeout;
+        // Handle gallery images - hover to open, click to close
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const link = this.querySelector('a');
+                const href = link.getAttribute('href');
+                
+                // Skip YouTube and Google Drive links
+                if (href.includes('youtube.com') || href.includes('drive.google.com')) {
+                    return;
+                }
+                
+                previewImage.src = href;
+                previewOverlay.classList.add('show');
+                imagePreview.classList.add('show');
+            });
+        });
 
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        const link = this.querySelector('a');
-        const href = link.getAttribute('href');
-        
-        // Skip YouTube and Google Drive links
-        if (href.includes('youtube.com') || href.includes('drive.google.com')) {
-            return;
+        // Handle profile photo - hover to open
+        const photoLink = document.querySelector('.photo-link');
+        if (photoLink) {
+            photoLink.addEventListener('mouseenter', function() {
+                const imagePath = this.getAttribute('data-image');
+                previewImage.src = imagePath;
+                previewOverlay.classList.add('show');
+                imagePreview.classList.add('show');
+            });
         }
-        
-        hoverTimeout = setTimeout(() => {
-            previewImage.src = href;
-            previewOverlay.classList.add('show');
-            imagePreview.classList.add('show');
-        }, 200); // 0.2 seconds
-    });
 
-    item.addEventListener('mouseleave', function() {
-        clearTimeout(hoverTimeout);
-        previewOverlay.classList.remove('show');
-        imagePreview.classList.remove('show');
-    });
-});
-
-// Handle profile photo - same delay
-const photoLink = document.querySelector('.photo-link');
-if (photoLink) {
-    photoLink.addEventListener('mouseenter', function() {
-        const imagePath = this.getAttribute('data-image');
-        hoverTimeout = setTimeout(() => {
-            previewImage.src = imagePath;
-            previewOverlay.classList.add('show');
-            imagePreview.classList.add('show');
-        }, 200);
-    });
-
-    photoLink.addEventListener('mouseleave', function() {
-        clearTimeout(hoverTimeout);
-        previewOverlay.classList.remove('show');
-        imagePreview.classList.remove('show');
-    });
-}
-
-// Close preview when clicking on overlay
-previewOverlay.addEventListener('click', function() {
-    previewOverlay.classList.remove('show');
-    imagePreview.classList.remove('show');
-});
-
+        // Close preview when clicking on overlay
+        previewOverlay.addEventListener('click', function() {
+            previewOverlay.classList.remove('show');
+            imagePreview.classList.remove('show');
+        });
     </script>
 </body>
 </html>
