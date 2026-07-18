@@ -322,9 +322,9 @@
         const imagePreview = document.querySelector('.image-preview');
         const previewImage = document.getElementById('previewImage');
 
-// Handle gallery images - click to open
+// Handle gallery images - hover to open, click to close
 document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', function(e) {
+    item.addEventListener('mouseenter', function() {
         const link = this.querySelector('a');
         const href = link.getAttribute('href');
         
@@ -333,14 +333,13 @@ document.querySelectorAll('.gallery-item').forEach(item => {
             return;
         }
         
-        e.preventDefault();
         previewImage.src = href;
         previewOverlay.classList.add('show');
         imagePreview.classList.add('show');
     });
 });
 
-// Handle profile photo - hover to open
+// Handle profile photo - hover to open, click to close
 const photoLink = document.querySelector('.photo-link');
 if (photoLink) {
     photoLink.addEventListener('mouseenter', function() {
@@ -348,11 +347,6 @@ if (photoLink) {
         previewImage.src = imagePath;
         previewOverlay.classList.add('show');
         imagePreview.classList.add('show');
-    });
-
-    photoLink.addEventListener('mouseleave', function() {
-        previewOverlay.classList.remove('show');
-        imagePreview.classList.remove('show');
     });
 }
 
